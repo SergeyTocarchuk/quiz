@@ -9,7 +9,8 @@ const questions = [
       'Dnipro',
       'Kyiv',
       'Kharkiv'
-    ]
+    ],
+    correctAnswer: 'Kyiv'
   },
   {
     title: 'Capital of Moldova?',
@@ -19,7 +20,8 @@ const questions = [
       'Chisinau',
       'Balti',
       'Drochia'
-    ]
+    ],
+    correctAnswer: 'Chisinau'
   },
   {
     title: 'Capital of Poland?',
@@ -29,7 +31,8 @@ const questions = [
       'Gdansk',
       'Wroclav',
       'Warszawa'
-    ]
+    ],
+    correctAnswer: 'Warszawa'
   }
 ]
 
@@ -47,8 +50,8 @@ form.addEventListener("submit", function(event) {
     data[entry[0]] = entry[1]
   };
 
-  html = resultComponent(data);
-  document.getElementById('result').innerHTML = html;
+  document.getElementById('result').innerHTML = resultComponent(data);
+  document.querySelector('.score').innerHTML = showScore(data);
 });
 
 // generates result
@@ -60,6 +63,21 @@ function resultComponent(data) {
   }
 
   return `<ul>${content}</ul>`
+}
+
+// check the result and print score
+function showScore(data){
+  let correctNum = 0;
+  let totalNum = questions.length;
+  let i = 0;
+  
+  for (const [key, value] of Object.entries(data)) {
+    if( value === questions[i].correctAnswer ){
+      correctNum++;
+    }
+    i++;
+  } 
+  return `Final result: ${correctNum} / ${totalNum}`;
 }
 
 function questionComponent(currentQuestion) {

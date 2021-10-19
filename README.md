@@ -12,13 +12,6 @@ quiz app
     question: 'who old are you?', your answer: '12', correct answer: 24
     question: 'who are you?', your answer: '', correct answer: 24
 
-
-
-
-
-
-
-
 hint:
 
   questions = [
