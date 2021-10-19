@@ -51,7 +51,7 @@ form.addEventListener("submit", function(event) {
   };
 
   resultComponent(data);
-  document.getElementById('result').innerHTML = showScore(data);
+  document.querySelector('.result').innerHTML = showScore(data);
   document.querySelector('.correct-answer').innerHTML = correctAnswer(data);
 });
 
@@ -88,9 +88,11 @@ function correctAnswer(data){
   for (const [key, value] of Object.entries(data)) {
     if( value !== questions[i].correctAnswer ){
       correctResult += `
-        <li>
-        ${questions[i].title} <s>${value}</s> 
-        ${questions[i].correctAnswer} 
+        <li class="answer">
+        ${questions[i].title} 
+        </li>
+        <li><span class="wrong"><s>${value}</s></span>
+        <span class="correct">${questions[i].correctAnswer}</span> 
         </li>`;
     }
     i++;
@@ -98,6 +100,7 @@ function correctAnswer(data){
   return `<ul>${correctResult}</ul>`
 }
 
+// show question and options
 function questionComponent(currentQuestion) {
   
   let options = currentQuestion.options.map(opt => (
