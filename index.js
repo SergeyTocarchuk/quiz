@@ -50,8 +50,9 @@ form.addEventListener("submit", function(event) {
     data[entry[0]] = entry[1]
   };
 
-  document.getElementById('result').innerHTML = resultComponent(data);
-  document.querySelector('.score').innerHTML = showScore(data);
+  resultComponent(data);
+  document.getElementById('result').innerHTML = showScore(data);
+  document.querySelector('.correct-answer').innerHTML = correctAnswer(data);
 });
 
 // generates result
@@ -78,6 +79,23 @@ function showScore(data){
     i++;
   } 
   return `Final result: ${correctNum} / ${totalNum}`;
+}
+
+// print wrong answers alongside correct options
+function correctAnswer(data){
+  let correctResult = ''
+  let i = 0;
+  for (const [key, value] of Object.entries(data)) {
+    if( value !== questions[i].correctAnswer ){
+      correctResult += `
+        <li>
+        ${questions[i].title} <s>${value}</s> 
+        ${questions[i].correctAnswer} 
+        </li>`;
+    }
+    i++;
+  }
+  return `<ul>${correctResult}</ul>`
 }
 
 function questionComponent(currentQuestion) {
