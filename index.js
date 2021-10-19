@@ -38,7 +38,7 @@ const questions = [
 
 html = questions.map(currentQuestion => (
   questionComponent(currentQuestion)
-))
+)).join("")
 document.getElementById('question').innerHTML = html
 
 form.addEventListener("submit", function(event) {
@@ -113,7 +113,7 @@ function questionComponent(currentQuestion) {
   return `
     <h3 class="title">${currentQuestion.title}</h3>
     <ul class="options">
-        ${options}
+        ${options.join("")}
     </ul>
     `
 }
