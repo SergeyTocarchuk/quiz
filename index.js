@@ -36,6 +36,7 @@ const questions = [
   }
 ]
 
+// Avoid unexpected comma using map() with join method
 html = questions.map(currentQuestion => (
   questionComponent(currentQuestion)
 )).join("")
@@ -109,7 +110,7 @@ function questionComponent(currentQuestion) {
       <label for=${opt}>${opt}</label>
     </li>`
   ))
-
+// Avoid unexpected comma using map() with join method
   return `
     <h3 class="title">${currentQuestion.title}</h3>
     <ul class="options">

@@ -34,4 +34,6 @@ Themes to cover:
 - onSubmit
 - innerHTML
 
-    
+Trick:
+To avoid unexpected comma using map() with [join method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
+More details [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
